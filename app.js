@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {db, seed, Author, Message} = require('./db/index');
+const {db, seed, Entry } = require('./db/index');
 const port = process.env.PORT || 3000
 
 app.get('/', async (req, res, next) => {
