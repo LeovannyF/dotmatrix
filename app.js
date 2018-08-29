@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/api/form', (req, res, next) => {  // where users will input data
-  res.send('FORMS FOR DAYS')
+  res.send('FORMS FOR DAYS AND DAYS')
 });
 
 app.get('/', (req, res, next) => { //post that will eventually grab the data that I am trying to post
