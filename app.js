@@ -18,7 +18,11 @@ app.get('/', (req, res, next) => { //post that will eventually grab the data tha
 });
 
 app.post('/api/user/entry', (req, res, next) => {
-
+  Entry.create({name: req.body.name,
+                city: req.body.city,
+                content: req.body.content})
+  .then(res.sendStatus(200))
+  .catch(next);
 })
 
 app.listen(port, ()=>{

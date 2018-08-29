@@ -2,7 +2,7 @@ Sequelize = require('sequelize');
 const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/dotMatrix');
 const {testCity, testAuthor} = require('./seed');
 
-const Author = db.define('author', {
+const Entry = db.define('entry', {
   name: Sequelize.STRING,
   city: Sequelize.STRING,
   content: Sequelize.STRING
