@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 
-//testing
-
 class Main extends Component {
   render() {
     return(
       <div>
-      <h1> Whats Cooking! </h1>
       <Form />
       </div>
     )
@@ -49,6 +46,7 @@ class Form extends Component {
       content:''
     })
   }
+
   handleChange(event) {
     this.setState({
       [event.target.name]:event.target.value
