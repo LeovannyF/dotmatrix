@@ -7,7 +7,10 @@ class Main extends Component {
   render() {
     return(
       <HashRouter>
+        <div>
         <Route path='/user/entry' component = {Form} />
+        <Route path='/single' component = {Single} />
+        </div>
       </HashRouter>
     )
   }
@@ -53,6 +56,30 @@ class Form extends Component {
     this.setState({
       [event.target.name]:event.target.value
     })
+  }
+}
+
+class Single extends Component {
+  constructor() {
+    super()
+    this.state = {
+      content: ''
+    }
+  }
+  componentDidMount() {
+    axios.get('/api/entry')
+    .then(res => res.data)
+    .then(data => data[0].content)
+    .then(content => this.setState({content}))
+    .catch(console.log.bind(console))
+  }
+  render() {
+    const content = this.state.content;
+    return (
+      <div>
+        <h1>{content}</h1>
+      </div>
+    )
   }
 }
 
