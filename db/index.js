@@ -9,13 +9,13 @@ const Author = db.define('author', {
 });
 
 const seed = async () =>{
-  const [Leo, Eve, Claudia] = await Promise.all(testAuthor.map(author => {
-    return Author.create({name: author});
+  const [Leo, Eve, Claudia] = await Promise.all(testAuthor.map(entry => {
+    return Entry.create({name: entry});
   }))
 }
 
 module.exports = {
   db,
-  Author,
+  Entry,
   seed
 }

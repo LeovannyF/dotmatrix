@@ -41,8 +41,7 @@ class Form extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-
-
+    axios.post('/api/user/entry', this.state)
     this.setState({
       name:'',
       city:'',

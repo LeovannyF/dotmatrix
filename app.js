@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {db, seed, Author} = require('./db/index');
+const {db, seed, Entry} = require('./db/index');
 const port = process.env.PORT || 3000
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -17,7 +17,7 @@ app.get('/', (req, res, next) => { //post that will eventually grab the data tha
  res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
-app.post('/api/form', (req, res, next) => {
+app.post('/api/user/entry', (req, res, next) => {
 
 })
 
