@@ -4,14 +4,15 @@ import LatestEntry from './LatestEntry'
 import {HashRouter, Route, Link} from 'react-router-dom'
 import axios from 'axios'
 
+const socket = io(window.location.path);
 
 class Main extends Component {
   render() {
     return(
       <HashRouter>
         <div>
-          <Route exact path='/' component = {LatestEntry} />
-          <Route path='/user/entry' component = {Form} />
+          <Route exact path='/' render={ () => <LatestEntry socket={socket} /> } />
+          <Route path='/user/entry' render={ () => <Form socket={socket} /> } />
           <Route path='/single' component = {Single} />
         </div>
       </HashRouter>
@@ -30,6 +31,7 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+  
   render() {
     return (
       <div id='container'>
@@ -45,9 +47,13 @@ class Form extends Component {
       </div>
     )
   }
-  handleSubmit(event) {
+
+  async handleSubmit(event) {
     event.preventDefault();
-    axios.post('/api/user/entry', this.state)
+    await axios.post('/api/user/entry', this.state)
+    socket.emit('entry', this.state)
+    console.log('EMITTING')
+
     this.setState({
       name:'',
       city:'',

@@ -4,6 +4,8 @@ const {db, seed, Entry} = require('./db/index');
 const port = process.env.PORT || 3000
 const path = require('path')
 const bodyParser = require('body-parser');
+const socketio = require('socket.io');
+
 
 
 app.use(express.static('public'));
@@ -33,7 +35,7 @@ app.post('/api/user/entry', (req, res, next) => {
   .catch(next);
 })
 
-app.listen(port, ()=>{
+const server = app.listen(port, ()=>{
   console.log(`I am listening on port, ${port}`);
 });
 
@@ -43,5 +45,19 @@ const init = async() => {
 }
 
 init();
+
+//========== Web Socket Logic ==================================== aw yea ===============\\
+
+const io = socketio(server);
+
+io.on('connect', socket => {
+  console.log(socket.id, 'is connected')
+
+  socket.on('entry', entry => {
+    socket.broadcast.emit('entry', entry);
+  })
+})
+
+
 
 module.exports = app;
