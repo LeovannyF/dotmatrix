@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
+import LatestEntry from './LatestEntry'
 import {HashRouter, Route, Link} from 'react-router-dom'
 import axios from 'axios'
+
 
 class Main extends Component {
   render() {
     return(
       <HashRouter>
         <div>
-        <Route path='/user/entry' component = {Form} />
-        <Route path='/single' component = {Single} />
+          <Route path='/user/entry' component = {Form} />
+          <Route path='/single' component = {Single} />
+          <LatestEntry />
         </div>
       </HashRouter>
     )
