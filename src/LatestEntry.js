@@ -14,11 +14,10 @@ export default class LatestEntry extends Component {
       .then(arr => arr[0]) //should eventually change the server so that it sends an object, not an array
       .then(latestEntry => this.setState({latestEntry}))
   }
-
   render() {
     return (
       <Fragment>
-        <p className="quote">{ this.state.latestEntry.content }</p>
+        <p className="quote">{ this.state.latestEntry.content ? this.state.latestEntry.content.toUpperCase() : 'Loading...'}</p>
       </Fragment>
     )
   }
