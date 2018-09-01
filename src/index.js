@@ -24,7 +24,7 @@ class Form extends Component {
   constructor() {
     super()
     this.state = {
-      name: '',
+      author: '',
       city: '',
       content: ''
     }
@@ -36,8 +36,8 @@ class Form extends Component {
     return (
       <div id='container'>
       <form onSubmit = {this.handleSubmit}>
-        <label htmlFor= 'name'> Author</label>
-        <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
+        <label htmlFor= 'author'> Author</label>
+        <input type='text' name='author' value={this.state.name} onChange={this.handleChange}/>
         <label htmlFor= 'city'> Place </label>
         <input type='text' name='city' value={this.state.city} onChange={this.handleChange} />
         <label htmlFor= 'content'> Content </label>
@@ -50,12 +50,12 @@ class Form extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state, 'WOO');
     await axios.post('/api/user/entry', this.state)
     socket.emit('entry', this.state)
-    console.log('EMITTING')
 
     this.setState({
-      name:'',
+      author:'',
       city:'',
       content:''
     })
