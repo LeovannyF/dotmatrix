@@ -67,6 +67,7 @@ form button:hover {
   font-family: 'Raleway Dots', cursive;
   width: 70vw;
   font-size: 60px;
+  margin-bottom: .5em;
 }
 
 .author {
@@ -74,6 +75,6 @@ form button:hover {
   font-size: 30px;
   margin-right: 20vw;
   margin-top: 0;
-  font-style: italic
+  font-style: italic;
 }
 

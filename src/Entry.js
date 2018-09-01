@@ -7,7 +7,7 @@ export default class Entry extends Component {
       <div>
         <div className="quote-container">
           <p className="quote">{ entry.content ? entry.content : ''}</p>
-          <p className="author">| { entry.content ? entry.author : ''} from {entry.city}</p>
+          <p className="author">- { entry.content ? entry.author : ''} from {entry.city}</p>
         </div>
       </div>
     )
