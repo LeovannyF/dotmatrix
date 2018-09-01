@@ -2,17 +2,17 @@ const seedEntries = [
   {
     name: 'Leo',
     city: 'New York',
-    content: 'I’m selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can’t handle me at my worst, then you sure as hell don’t deserve me at my best.' 
+    content: 'The world today is very fragile and it’s our duty to do everything to unite people and nations to remind them that we don’t have a planet B.' 
   },
   {
     name: 'Eve',
     city: 'Denver',
-    content: 'When one door of happiness closes, another opens; but often we look so long at the closed door that we do not see the one which has been opened for us.' 
+    content: 'On Earth Day, let us reaffirm our commitment towards creating a better planet for our future generations. Let us work together to mitigate the menace of climate change. This would be a great tribute to our beloved Mother Earth.'
   },
   {
     name: 'Claudia',
     city: 'Chiang Mai',
-    content: 'I can’t give you a sure-fire formula for success, but I can give you a formula for failure: try to please everybody all the time.'
+    content: 'Our desire to ensure energy for all must not lead to the undesired effect of a spiral of extreme climate changes due to a catastrophic rise in global temperatures, harsher environments and increased levels of poverty.'
   }
 ]
 
