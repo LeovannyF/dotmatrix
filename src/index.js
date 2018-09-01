@@ -4,14 +4,15 @@ import LatestEntry from './LatestEntry'
 import {HashRouter, Route, Link} from 'react-router-dom'
 import axios from 'axios'
 
+const socket = io(window.location.path);
 
 class Main extends Component {
   render() {
     return(
       <HashRouter>
         <div>
-          <Route exact path='/' component = {LatestEntry} />
-          <Route path='/user/entry' component = {Form} />
+          <Route exact path='/' render={ () => <LatestEntry socket={socket} /> } />
+          <Route path='/user/entry' render={ () => <Form socket={socket} /> } />
           <Route path='/single' component = {Single} />
         </div>
       </HashRouter>
@@ -23,19 +24,20 @@ class Form extends Component {
   constructor() {
     super()
     this.state = {
-      name: '',
+      author: '',
       city: '',
       content: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+  
   render() {
     return (
       <div id='container'>
       <form onSubmit = {this.handleSubmit}>
-        <label htmlFor= 'name'> Author</label>
-        <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
+        <label htmlFor= 'author'> Author</label>
+        <input type='text' name='author' value={this.state.name} onChange={this.handleChange}/>
         <label htmlFor= 'city'> Place </label>
         <input type='text' name='city' value={this.state.city} onChange={this.handleChange} />
         <label htmlFor= 'content'> Content </label>
@@ -45,11 +47,15 @@ class Form extends Component {
       </div>
     )
   }
-  handleSubmit(event) {
+
+  async handleSubmit(event) {
     event.preventDefault();
-    axios.post('/api/user/entry', this.state)
+    console.log(this.state, 'WOO');
+    await axios.post('/api/user/entry', this.state)
+    socket.emit('entry', this.state)
+
     this.setState({
-      name:'',
+      author:'',
       city:'',
       content:''
     })
