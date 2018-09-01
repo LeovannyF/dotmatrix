@@ -10,9 +10,9 @@ class Main extends Component {
     return(
       <HashRouter>
         <div>
+          <Route exact path='/' component = {LatestEntry} />
           <Route path='/user/entry' component = {Form} />
           <Route path='/single' component = {Single} />
-          <LatestEntry />
         </div>
       </HashRouter>
     )

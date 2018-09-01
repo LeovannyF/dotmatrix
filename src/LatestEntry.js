@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import Entry from './Entry';
 import axios from 'axios';
 
 export default class LatestEntry extends Component {
@@ -14,14 +15,12 @@ export default class LatestEntry extends Component {
       .then(arr => arr[0]) //should eventually change the server so that it sends an object, not an array
       .then(latestEntry => this.setState({latestEntry}))
   }
-
   render() {
+    const { latestEntry } = this.state;
     return (
-      <Fragment>
-        <h2>Latest Entry:</h2> 
-        <hr/>
-        <p>{ this.state.latestEntry.content }</p>
-      </Fragment>
+      <div>
+        { this.state.latestEntry.content ? <Entry entry={this.state.latestEntry} /> : '' }
+      </div>
     )
   }
 }
