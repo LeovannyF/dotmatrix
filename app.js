@@ -10,13 +10,14 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/api/entry', (req, res, next) => {
+  console.log('hit')
   Entry.findAll({
     limit: 1,
     order:[
       ['createdAt', 'DESC']
     ]
   })
-  .then(response => res.send(response))
+  .then(response => { console.log(response); res.send(response)})
   .catch(next);
 })
 
