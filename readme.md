@@ -3,7 +3,7 @@
 
 ## Todos
 - [ ] Figure out storage
-- [ ] Get design direction from you gf, Leo
+- [ ] Get design direction from your gf, Leo
 - [ ] Iterate
 - [ ] Add automatic quote rotation
 - [ ] Add description to repo (Leo, you alone can do this) 
