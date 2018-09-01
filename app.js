@@ -6,8 +6,6 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const socketio = require('socket.io');
 
-
-
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
@@ -27,9 +25,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/api/user/entry', (req, res, next) => {
-  Entry.create({name: req.body.name,
-                city: req.body.city,
-                content: req.body.content})
+  Entry.create(req.body)
   .then(res.sendStatus(200))
   .catch(next);
 })
