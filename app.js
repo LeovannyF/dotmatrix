@@ -12,7 +12,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/api/entry', (req, res, next) => {
-  console.log('hit')
   Entry.findAll({
     limit: 1,
     order:[
