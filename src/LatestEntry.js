@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import Entry from './Entry';
 import axios from 'axios';
 
 export default class LatestEntry extends Component {
@@ -17,8 +18,8 @@ export default class LatestEntry extends Component {
   render() {
     const { latestEntry } = this.state;
     return (
-      <div className="quote-container">
-        <p className="quote">{ latestEntry.content ? latestEntry.content : ''}</p>
+      <div>
+        { this.state.latestEntry.content ? <Entry entry={this.state.latestEntry} /> : '' }
       </div>
     )
   }

@@ -60,11 +60,20 @@ form button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .quote {
   font-family: 'Raleway Dots', cursive;
-  width: 60vw;
+  width: 70vw;
   font-size: 60px;
+}
+
+.author {
+  align-self: flex-end;
+  font-size: 30px;
+  margin-right: 20vw;
+  margin-top: 0;
+  font-style: italic
 }
 

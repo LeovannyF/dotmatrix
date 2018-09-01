@@ -3,7 +3,7 @@ const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/
 const { seedEntries } = require('./seed');
 
 const Entry = db.define('entry', {
-  name: Sequelize.STRING,
+  author: Sequelize.STRING,
   city: Sequelize.STRING,
   content: {
     type: Sequelize.STRING,
