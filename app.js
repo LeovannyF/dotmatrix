@@ -17,7 +17,7 @@ app.get('/api/entry', (req, res, next) => {
       ['createdAt', 'DESC']
     ]
   })
-  .then(response => { console.log(response); res.send(response)})
+  .then(response => res.send(response))
   .catch(next);
 })
 
