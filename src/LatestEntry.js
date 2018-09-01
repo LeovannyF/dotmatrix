@@ -15,10 +15,11 @@ export default class LatestEntry extends Component {
       .then(latestEntry => this.setState({latestEntry}))
   }
   render() {
+    const { latestEntry } = this.state;
     return (
-      <Fragment>
-        <p className="quote">{ this.state.latestEntry.content ? this.state.latestEntry.content.toUpperCase() : 'Loading...'}</p>
-      </Fragment>
+      <div className="quote-container">
+        <p className="quote">{ latestEntry.content ? latestEntry.content : ''}</p>
+      </div>
     )
   }
 }

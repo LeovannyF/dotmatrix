@@ -5,7 +5,13 @@ const { seedEntries } = require('./seed');
 const Entry = db.define('entry', {
   name: Sequelize.STRING,
   city: Sequelize.STRING,
-  content: Sequelize.STRING
+  content: {
+    type: Sequelize.STRING,
+    get() {
+      const content = this.getDataValue('content');
+      return `"${content.toUpperCase()}"`;
+    }
+  }
 });
 
 const seed = async () =>{

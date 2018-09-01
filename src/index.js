@@ -9,10 +9,10 @@ class Main extends Component {
   render() {
     return(
       <HashRouter>
-        <div className="quote-container">
+        <div>
+          <Route exact path='/' component = {LatestEntry} />
           <Route path='/user/entry' component = {Form} />
           <Route path='/single' component = {Single} />
-          <LatestEntry />
         </div>
       </HashRouter>
     )
