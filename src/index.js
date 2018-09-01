@@ -9,7 +9,7 @@ class Main extends Component {
   render() {
     return(
       <HashRouter>
-        <div>
+        <div className="quote-container">
           <Route path='/user/entry' component = {Form} />
           <Route path='/single' component = {Single} />
           <LatestEntry />

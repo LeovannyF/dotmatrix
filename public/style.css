@@ -52,3 +52,18 @@ form button {
 form button:hover {
   background-color: #65878F;
 }
+
+.quote-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote {
+  font-family: 'Raleway Dots', cursive;
+  width: 60vw;
+  font-size: 60px;
+}
+

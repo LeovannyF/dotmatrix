@@ -18,9 +18,7 @@ export default class LatestEntry extends Component {
   render() {
     return (
       <Fragment>
-        <h2>Latest Entry:</h2> 
-        <hr/>
-        <p>{ this.state.latestEntry.content }</p>
+        <p className="quote">{ this.state.latestEntry.content }</p>
       </Fragment>
     )
   }
