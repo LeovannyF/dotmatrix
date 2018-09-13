@@ -4,7 +4,6 @@ const { app, io } = require('./server');
 const Filter = require('bad-words');   // this is my bad word filter
 const badFilter = new Filter();
 
-
 io.on('connect', socket => {
   console.log(socket.id, 'is connected')
 
