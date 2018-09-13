@@ -3,6 +3,7 @@ import Entry from './Entry';
 import axios from 'axios';
 
 
+
 export default class LatestEntry extends Component {
   constructor() {
     super();

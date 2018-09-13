@@ -6,6 +6,11 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const socketio = require('socket.io');
 
+const Filter = require('bad-words');   // this is my bad word filter
+
+const badFilter = new Filter();
+
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
