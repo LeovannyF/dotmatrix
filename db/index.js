@@ -9,17 +9,21 @@ const Entry = db.define('entry', {
   city: Sequelize.STRING,
   content: {
     type: Sequelize.STRING,
+  },
+  hof: {
+    type: Sequelize.BOOL,
+    default: false
   }
 });
 
 //this is my hook for filtering the words, its work but only after it has already been served by websocket
- Entry.beforeCreate((user, options) => {
-   let filtered = badFilter.clean(user.content);
-     user.content = filtered.toUpperCase();
- })
+Entry.beforeCreate((user, options) => {
+  let filtered = badFilter.clean(user.content);
+  user.content = filtered.toUpperCase();
+})
 
 
-const seed = async () =>{
+const seed = async () => {
   const [Leo, Eve, Claudia] = await Promise.all(seedEntries.map(entry => {
     return Entry.create(entry);
   }))
