@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {db, seed, Entry} = require('./db/index');
+const { db, seed, Entry } = require('./db/index');
 const port = process.env.PORT || 3000
 const path = require('path')
 const bodyParser = require('body-parser');
@@ -17,16 +17,16 @@ app.use(bodyParser.json());
 app.get('/api/entry', (req, res, next) => {
   Entry.findAll({
     limit: 1,
-    order:[
+    order: [
       ['createdAt', 'DESC']
     ]
   })
-  .then(response => res.send(response))
-  .catch(next);
+    .then(response => res.send(response))
+    .catch(next);
 })
 
 app.get('/', (req, res, next) => {
- res.sendFile(path.join(__dirname, 'public/index.html'))
+  res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
 app.post('/api/user/entry', (req, res, next) => {
@@ -35,12 +35,12 @@ app.post('/api/user/entry', (req, res, next) => {
   .catch(next);
 })
 
-const server = app.listen(port, ()=>{
+const server = app.listen(port, () => {
   console.log(`I am listening on port, ${port}`);
 });
 
-const init = async() => {
-  await db.sync({force:true})
+const init = async () => {
+  await db.sync({ force: true })
   await seed();
 }
 
