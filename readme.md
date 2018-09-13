@@ -4,7 +4,7 @@
 ## Todos
 - [ ] Figure out storage
 - [ ] "Hall of Fame" feature
-- [ ] Limit length of quote
+- [x] Limit length of quote
 - [ ] Limit content of quote (bad words)
 - [x] Get design direction from your gf, Leo
 - [ ] Add automatic quote rotation every 60 seconds, with queue for extras
