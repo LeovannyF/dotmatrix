@@ -14,13 +14,8 @@ const server = app.listen(port, () => {
 
 const io = socketio(server);
 
-io.on('connect', socket => {
-  console.log(socket.id, 'is connected')
 
-  //the server listens for a new entry submission and then broadcasts that new entry obj (before actually entering it in the db) to other connected browsers
-  socket.on('entry', entry => {
-    socket.broadcast.emit('entry', entry);
-  })
-})
-
-module.exports = app;
+module.exports = {
+  app,
+  io
+}

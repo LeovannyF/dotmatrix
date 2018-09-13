@@ -1,8 +1,18 @@
 const { db, seed, Entry } = require('./db/index');
 const path = require('path')
-const app = require('./server');
+const { app, io } = require('./server');
 const Filter = require('bad-words');   // this is my bad word filter
 const badFilter = new Filter();
+
+
+io.on('connect', socket => {
+  console.log(socket.id, 'is connected')
+
+  //the server listens for a new entry submission and then broadcasts that new entry obj (before actually entering it in the db) to other connected browsers
+  socket.on('entry', entry => {
+    socket.broadcast.emit('entry', entry);
+  })
+})
 
 app.get('/api/entry', (req, res, next) => {
   Entry.findAll({
@@ -21,7 +31,9 @@ app.get('/', (req, res, next) => {
 
 app.post('/api/user/entry', (req, res, next) => {
   Entry.create(req.body)
-    .then(res.sendStatus(200))
+    .then(entry => {
+      res.json(entry);
+    })
     .catch(next);
 })
 
