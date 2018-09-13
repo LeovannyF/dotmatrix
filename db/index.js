@@ -9,10 +9,25 @@ const Entry = db.define('entry', {
   city: Sequelize.STRING,
   content: {
     type: Sequelize.STRING,
+    set(content) {
+      //filter user input for profanity
+      const filtered = badFilter.clean(content);
+      const hasProfanity = content !== filtered;
+
+      //if profanity detected, set hasProfanity to true
+      if (hasProfanity) this.setDataValue('hasProfanity', true);
+
+      //set content to filtered version
+      this.setDataValue('content', filtered.toUpperCase());
+    }
   },
   hof: {
     type: Sequelize.BOOLEAN,
-    default: false
+    defaultValue: false
+  },
+  hasProfanity: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 });
 

@@ -36,6 +36,7 @@ export default class Form extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     const response = await axios.post('/api/user/entry', this.state)
+    console.log(response.data);
     this.props.socket.emit('entry', response.data);
 
     this.setState({
