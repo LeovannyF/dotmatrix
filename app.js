@@ -6,13 +6,15 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const socketio = require('socket.io');
 
+const Filter = require('bad-words');   // this is my bad word filter
+
+const badFilter = new Filter();
 
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/api/entry', (req, res, next) => {
-  console.log('hit')
   Entry.findAll({
     limit: 1,
     order: [
@@ -28,13 +30,9 @@ app.get('/', (req, res, next) => {
 });
 
 app.post('/api/user/entry', (req, res, next) => {
-  Entry.create({
-    name: req.body.name,
-    city: req.body.city,
-    content: req.body.content
-  })
-    .then(res.sendStatus(200))
-    .catch(next);
+  Entry.create(req.body)
+  .then(res.sendStatus(200))
+  .catch(next);
 })
 
 const server = app.listen(port, () => {

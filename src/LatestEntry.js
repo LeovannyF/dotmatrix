@@ -3,6 +3,7 @@ import Entry from './Entry';
 import axios from 'axios';
 
 
+
 export default class LatestEntry extends Component {
   constructor() {
     super();
@@ -11,7 +12,7 @@ export default class LatestEntry extends Component {
     }
   }
 
-  componentDidMount() { 
+  componentDidMount() {
     this.props.socket.on('entry', latestEntry => this.setState({ latestEntry }));
     axios.get('/api/entry')
       .then(response => response.data)
