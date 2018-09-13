@@ -13,6 +13,16 @@ io.on('connect', socket => {
   })
 })
 
+app.get('/api/hof', (req, res, next) => {
+  Entry.findAll({
+    where: {
+      hof: true
+    }
+  })
+    .then(entries => res.json(entries))
+    .catch(err => console.log(err))
+});
+
 
 app.get('/api/entry', (req, res, next) => {
   Entry.findAll({

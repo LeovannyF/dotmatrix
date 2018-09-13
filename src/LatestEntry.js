@@ -2,8 +2,6 @@ import React, { Fragment, Component } from 'react';
 import Entry from './Entry';
 import axios from 'axios';
 
-
-
 export default class LatestEntry extends Component {
   constructor() {
     super();
@@ -17,13 +15,14 @@ export default class LatestEntry extends Component {
     axios.get('/api/entry')
       .then(response => response.data)
       .then(arr => arr[0]) //should eventually change the server so that it sends an object, not an array
-      .then(latestEntry => this.setState({latestEntry}))
+      .then(latestEntry => this.setState({ latestEntry }))
   }
+
   render() {
     const { latestEntry } = this.state;
     return (
       <div>
-        { this.state.latestEntry.content ? <Entry entry={this.state.latestEntry} /> : '' }
+        {latestEntry.content ? <Entry entry={latestEntry} /> : ''}
       </div>
     )
   }
