@@ -11,7 +11,7 @@ const Entry = db.define('entry', {
     type: Sequelize.STRING,
   },
   hof: {
-    type: Sequelize.BOOL,
+    type: Sequelize.BOOLEAN,
     default: false
   }
 });
