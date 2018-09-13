@@ -48,7 +48,6 @@ class Form extends Component {
             <button type='submit'> Submit </button>
           </form>
         </div>
->>>>>>> 51c3eacb1b9b448e3839a730c563926b67ecd8f5
       </div>
     )
   }
