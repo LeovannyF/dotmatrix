@@ -31,19 +31,19 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  
+
   render() {
     return (
       <div id='container'>
         <div className="form-wrapper">
           <form onSubmit = {this.handleSubmit}>
             <label htmlFor= 'author'>Name</label>
-            <input placeholder="John Dunn" type='text' name='author' value={this.state.author} onChange={this.handleChange}/>
+            <input maxlength="20" placeholder="John Dunn" type='text' name='author' value={this.state.author} onChange={this.handleChange}/>
             <label htmlFor= 'city'>Place</label>
-            <input placeholder="Boulder, CO" type='text' name='city' value={this.state.city} onChange={this.handleChange} />
+            <input maxlength="20" placeholder="Boulder, CO" type='text' name='city' value={this.state.city} onChange={this.handleChange} />
             <label  htmlFor= 'content'>Content</label>
             <br />
-            <textarea placeholder="My feelings on climate change are..." rows="7" type='text' name='content' value={this.state.content} onChange={this.handleChange} />
+            <textarea maxlength="20" placeholder="My feelings on climate change are..." rows="7" type='text' name='content' value={this.state.content} onChange={this.handleChange} />
             <br />
             <button type='submit'> Submit </button>
           </form>
