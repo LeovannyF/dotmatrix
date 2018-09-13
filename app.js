@@ -13,6 +13,7 @@ io.on('connect', socket => {
   })
 })
 
+
 app.get('/api/entry', (req, res, next) => {
   Entry.findAll({
     limit: 1,
