@@ -31,17 +31,17 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-  
+//maxlength attribute in HTML will control the total length of the value users can input.
   render() {
     return (
       <div id='container'>
       <form onSubmit = {this.handleSubmit}>
         <label htmlFor= 'author'> Author</label>
-        <input type='text' name='author' value={this.state.name} onChange={this.handleChange}/>
+        <input maxlength="20" type='text' name='author' value={this.state.name} onChange={this.handleChange}/>
         <label htmlFor= 'city'> Place </label>
-        <input type='text' name='city' value={this.state.city} onChange={this.handleChange} />
+        <input maxlength="20" type='text' name='city' value={this.state.city} onChange={this.handleChange} />
         <label htmlFor= 'content'> Content </label>
-        <input type='text' name='content' value={this.state.content} onChange={this.handleChange} />
+        <input maxlength="40" type='text' name='content' value={this.state.content} onChange={this.handleChange} />
         <button type='submit'> Submit </button>
       </form>
       </div>
