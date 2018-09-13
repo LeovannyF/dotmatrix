@@ -1,19 +1,19 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import LatestEntry from './LatestEntry'
-import {HashRouter, Route, Link} from 'react-router-dom'
+import { HashRouter, Route, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const socket = io(window.location.path);
 
 class Main extends Component {
   render() {
-    return(
+    return (
       <HashRouter>
         <div>
-          <Route exact path='/' render={ () => <LatestEntry socket={socket} /> } />
-          <Route path='/user/entry' render={ () => <Form socket={socket} /> } />
-          <Route path='/single' component = {Single} />
+          <Route exact path='/' render={() => <LatestEntry socket={socket} />} />
+          <Route path='/user/entry' render={() => <Form socket={socket} />} />
+          <Route path='/single' component={Single} />
         </div>
       </HashRouter>
     )
@@ -31,19 +31,19 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-//maxlength attribute in HTML will control the total length of the value users can input.
+  //maxlength attribute in HTML will control the total length of the value users can input.
   render() {
     return (
       <div id='container'>
-      <form onSubmit = {this.handleSubmit}>
-        <label htmlFor= 'author'> Author</label>
-        <input maxlength="20" type='text' name='author' value={this.state.name} onChange={this.handleChange}/>
-        <label htmlFor= 'city'> Place </label>
-        <input maxlength="20" type='text' name='city' value={this.state.city} onChange={this.handleChange} />
-        <label htmlFor= 'content'> Content </label>
-        <input maxlength="40" type='text' name='content' value={this.state.content} onChange={this.handleChange} />
-        <button type='submit'> Submit </button>
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor='author'> Author</label>
+          <input maxlength="20" type='text' name='author' value={this.state.name} onChange={this.handleChange} />
+          <label htmlFor='city'> Place </label>
+          <input maxlength="20" type='text' name='city' value={this.state.city} onChange={this.handleChange} />
+          <label htmlFor='content'> Content </label>
+          <input maxlength="40" type='text' name='content' value={this.state.content} onChange={this.handleChange} />
+          <button type='submit'> Submit </button>
+        </form>
       </div>
     )
   }
@@ -52,18 +52,18 @@ class Form extends Component {
     event.preventDefault();
     console.log(this.state, 'WOO');
     await axios.post('/api/user/entry', this.state)
-    socket.emit('entry', this.state)
+    // socket.emit('entry', this.state)
 
     this.setState({
-      author:'',
-      city:'',
-      content:''
+      author: '',
+      city: '',
+      content: ''
     })
   }
 
   handleChange(event) {
     this.setState({
-      [event.target.name]:event.target.value
+      [event.target.name]: event.target.value
     })
   }
 }
@@ -77,10 +77,10 @@ class Single extends Component {
   }
   componentDidMount() {
     axios.get('/api/entry')
-    .then(res => res.data)
-    .then(data => data[0].content)
-    .then(content => this.setState({content}))
-    .catch(console.log.bind(console))
+      .then(res => res.data)
+      .then(data => data[0].content)
+      .then(content => this.setState({ content }))
+      .catch(console.log.bind(console))
   }
   render() {
     const content = this.state.content;
